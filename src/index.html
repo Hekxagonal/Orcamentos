@@ -1,14 +1,104 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./extra_modules/bulma.css">
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../extra_modules/bulma.css" />
+    <link rel="stylesheet" href="style.css" />
     <title>Criar novo Orçamento</title>
-</head>
-<body>
-    <p class="title">TESTE<p>
-    <script src="./extra_modules/vue.js"></script>
-</body>
+  </head>
+  <body>
+    <div id="documentHead">
+      <p class="title">Criar novo documento</p>
+      <p></p>
+      <form id="document-head" autocomplete="off">
+        <div class="field is-grouped">
+          <div class="control is-expanded switch">
+            <label class="label">Cliente</label>
+            <input type="text" class="input form-input" id="client" />
+          </div>
+
+          <div class="control is-expanded switch">
+            <label class="label">CNPJ</label>
+            <input type="text" class="input form-input" id="cnpj" />
+          </div>
+        </div>
+
+        <div class="field is-grouped">
+          <div class="control is-expanded switch">
+            <label class="label">Endereço</label>
+            <input type="text" class="input" id="end" />
+          </div>
+
+          <div class="control switch">
+            <label class="label">Numero</label>
+            <input type="text" class="input form-input" id="number" />
+          </div>
+
+          <div class="control is-expanded switch">
+            <label class="label">Inscrição Estadual</label>
+            <input type="text" class="input form-input" id="IE" />
+          </div>
+        </div>
+
+        <div class="field is-grouped">
+          <div class="control is-expanded switch">
+            <label class="label">Cidade</label>
+            <input type="text" class="input form-input" id="city" />
+          </div>
+
+          <div class="control switch">
+            <label class="label">Estado</label>
+            <span id="select" class="select form-input">
+              <select class='input' id="state">
+                <option>AC</option>
+                <option>AL</option>
+                <option>AP</option>
+                <option>AM</option>
+                <option>BA</option>
+                <option>CE</option>
+                <option>DF</option>
+                <option>ES</option>
+                <option>GO</option>
+                <option>MA</option>
+                <option>MT</option>
+                <option>MS</option>
+                <option>MG</option>
+                <option>PA</option>
+                <option>PB</option>
+                <option>PE</option>
+                <option>PI</option>
+                <option>RJ</option>
+                <option>RN</option>
+                <option>RS</option>
+                <option>RO</option>
+                <option>RR</option>
+                <option>SC</option>
+                <option>SE</option>
+                <option>TO</option>
+              </select>
+            </span>
+          </div>
+
+          <div class="control switch">
+            <label class="label">Fone</label>
+            <input type="text" class="input form-input" id="phone" />
+          </div>
+        </div>
+
+        <div class="documentHeadPainel">
+          <p class="control">
+            <a class="button is-light is-info" onclick='documentHead.confirm()'> Confirmar </a>
+
+            <a class="button is-light is-danger" onclick="documentHead.reset()"> Reset </a>
+          </p>
+
+        </div>
+      </form>
+    </div>
+    <script src="./scripts/classes.js"></script>
+    <script src="./scripts/script.js"></script>
+    <script src="../extra_modules/vue.js"></script>
+  </body>
 </html>

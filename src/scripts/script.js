@@ -1,0 +1,1 @@
+const documentHead = new DocumentHead()
