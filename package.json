@@ -1,0 +1,22 @@
+{
+  "name": "nexus_orcamentos_module",
+  "version": "1.0.0",
+  "description": "Um gerador de orçamentos que salva em PDF, e usa NodeJS, Eletron e VueJS.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hekxagonal/Orcamentos.git"
+  },
+  "author": "Flavio Alexandre Rodrigues Gomes",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Hekxagonal/Orcamentos/issues"
+  },
+  "homepage": "https://github.com/Hekxagonal/Orcamentos#readme",
+  "devDependencies": {
+    "electron": "^17.0.0"
+  }
+}
