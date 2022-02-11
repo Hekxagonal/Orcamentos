@@ -103,14 +103,10 @@
           </div>
         </div>
 
-        <div class="documentHeadPainel">
-          <p class="control">
-            <a class="button is-light is-info" onclick="documentHead.confirm()">
+        <div class="">
+          <p class="control documentHeadPainel">
+            <a id="confirm-button" class="button is-light is-info" onclick="documentHead.confirm()">
               Confirmar
-            </a>
-
-            <a class="button is-light is-danger" onclick="documentHead.reset()">
-              Reset
             </a>
           </p>
         </div>
@@ -146,6 +142,7 @@
             <input
               id="qnt"
               step=".01"
+              required
               type="number"
               class="input"
               placeholder="Quantidade"
@@ -153,7 +150,7 @@
           </th>
           <th>
             <span class="select"
-              ><select id="unit">
+              ><select id="unit" required>
                 <option>Unid</option>
                 <option>Metros</option>
                 <option>Kgs</option>
@@ -163,7 +160,7 @@
           </th>
           <th>
             <input
-              id="descri"
+              id="descri" required
               type="text"
               class="input is-expanded"
               placeholder="Descrição"
@@ -171,7 +168,7 @@
           </th>
           <th>
             <input
-              id="preco"
+              id="preco" required
               type="number"
               step=".01"
               class="input"

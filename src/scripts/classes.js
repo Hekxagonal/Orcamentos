@@ -3,8 +3,8 @@ class DocumentHead {
     this.form = document.querySelector("#document-head");
     this.inputs = this.form.querySelectorAll("input");
     this.elSwitch = document.querySelectorAll(".switch");
-    this.mode = 0; 
-    this.date()
+    this.mode = 0;
+    this.date();
 
     this.cliente;
     this.cnpj;
@@ -16,13 +16,13 @@ class DocumentHead {
     this.phone;
   }
 
-  date(){
-    const date = new Date()
-    let month = date.getMonth
-    let text = date.toLocaleDateString('pt-BR')
-    text = document.createTextNode(text)
-    const dateElement = document.querySelector('#date')
-    dateElement.appendChild(text)
+  date() {
+    const date = new Date();
+    let month = date.getMonth;
+    let text = date.toLocaleDateString("pt-BR");
+    text = document.createTextNode(text);
+    const dateElement = document.querySelector("#date");
+    dateElement.appendChild(text);
   }
 
   confirm() {
@@ -55,33 +55,50 @@ class DocumentHead {
       input.remove();
 
       let newElement = document.createElement("p");
-      newElement.classList.add('break-line')
+      newElement.classList.add("break-line");
       let textNode = document.createTextNode(input.value);
       newElement.appendChild(textNode);
       el.appendChild(newElement);
     }
+
+    const painel = document.querySelector(".documentHeadPainel");
+    painel.querySelector("#confirm-button").remove();
+
+    let aReset = document.createElement("a");
+    aReset.setAttribute("class", "button is-light is-danger");
+    aReset.setAttribute("onclick", "documentHead.reset()");
+    let text = document.createTextNode("Reset");
+    aReset.appendChild(text);
+    painel.appendChild(aReset);
+
     this.mode = 1;
+    printButton();
   }
 }
 
 class DocumentBody {
   constructor() {
-    this.total = 0
+    this.total = 0;
+    this.prod = 0;
   }
 
   addElement() {
     let qnt = document.querySelector("#qnt").value;
-    qnt = parseFloat(qnt.replace(',', '.'))
+    qnt = parseFloat(qnt.replace(",", "."));
+    if (!qnt) return;
 
     const unit = document.querySelector("#unit");
+    if (!unit) return;
 
     const descri = document.querySelector("#descri");
+    if (!descri) return;
 
     let preco = document.querySelector("#preco").value;
-    preco = parseFloat(preco.replace(',', '.'))
+    if (!preco) return;
+    preco = parseFloat(preco.replace(",", "."));
 
     const total = Number(preco) * Number(qnt);
-    this.total += total
+    this.total += total;
 
     const tbody = document.querySelector("#prods");
 
@@ -98,34 +115,52 @@ class DocumentBody {
         currency: "BRL",
       }).format(total),
     ];
-    
-    let documentTotal = [...values]
-    documentTotal = documentTotal.pop()
-    console.log(values, documentTotal)
+
+    let documentTotal = [...values];
+    documentTotal = documentTotal.pop();
+    console.log(values, documentTotal);
 
     const tr = document.createElement("tr");
 
     for (let value of values) {
       const td = document.createElement("td");
       const textNode = document.createTextNode(value);
-      if (value === documentTotal){
-        td.classList.add('somaTOTAL')
+      if (value === documentTotal) {
+        td.classList.add("somaTOTAL");
       }
       td.appendChild(textNode);
       tr.appendChild(td);
     }
 
     tbody.appendChild(tr);
-    this.gettotal()
+    this.prod += 1;
+    this.gettotal();
+    printButton();
   }
 
-  gettotal(){
-
-    const thResult = document.querySelector('#resultTOTAL')
+  gettotal() {
+    const thResult = document.querySelector("#resultTOTAL");
     let value = new Intl.NumberFormat("pt-BR", {
       style: "currency",
       currency: "BRL",
-    }).format(this.total)
-    thResult.innerHTML = value
+    }).format(this.total);
+    thResult.innerHTML = value;
+  }
+}
+
+let havePrintButton = false
+
+function printButton() {
+  if (documentHead.mode === 1 && documentBody.prod > 0 && !havePrintButton) {
+    const painel = document.querySelector(".documentHeadPainel");
+
+    let aPrint = document.createElement("a");
+    aPrint.setAttribute("class", "button is-light ml-3");
+    aPrint.setAttribute("onclick", "window.print()");
+    let text = document.createTextNode("Imprimir");
+    aPrint.appendChild(text);
+    painel.appendChild(aPrint);
+
+    havePrintButton = true
   }
 }
