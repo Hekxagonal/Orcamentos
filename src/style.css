@@ -1,7 +1,21 @@
+
 body {
     margin: 30px
 }
 
 .break-line {
     white-space: normal
+}
+
+.cabecario{
+    text-align: center;
+}
+
+.assinatura{
+    text-align: center;
+    border-top: 1px solid black;
+}
+
+.assinaturas{
+    padding-top: 100px;
 }

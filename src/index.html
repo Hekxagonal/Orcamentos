@@ -7,50 +7,58 @@
     <link rel="stylesheet" href="../extra_modules/bulma.css" />
     <link rel="stylesheet" href="style.css" />
     <link href="print.css" media="print" rel="stylesheet" />
-    <title>Criar novo Orçamento</title>
+    <title>ORÇAMENTO</title>
   </head>
   <body>
     <div id="documentHead">
-      <p class="title">Criar novo documento</p>
-      <p id="date" class="subtitle"></p>
+      <section class='cabecario mb-3'>
+        <p class="title is-size-1">NOME DA EMPRESA</p>
+        <p style="margin-bottom: 0" class="subtitle is-size-4">
+          Slogan da Empresa
+        </p>
+        <p style="margin-bottom: 0" class="subtitle is-size-6">
+          Tel: (00) 0000 0000 / 00000 0000 / 00000 0000
+        </p>
+        <p id="date" class="subtitle is-size-6"></p>
+      </section>
       <form id="document-head" autocomplete="off">
         <div class="field is-grouped">
           <div class="control is-expanded switch">
-            <label class="label">Cliente</label>
+            <label class="label is-size-7">Cliente</label>
             <input type="text" class="input form-input" id="client" />
           </div>
 
           <div class="control is-expanded switch">
-            <label class="label">CNPJ / CPF</label>
+            <label class="label is-size-7">CNPJ / CPF</label>
             <input type="text" class="input form-input" id="cnpj" />
           </div>
         </div>
 
         <div class="field is-grouped">
           <div class="control is-expanded switch">
-            <label class="label">Endereço</label>
+            <label class="label is-size-7">Endereço</label>
             <input type="text" class="input" id="end" />
           </div>
 
           <div class="control switch">
-            <label class="label">Numero</label>
+            <label class="label is-size-7">Numero</label>
             <input type="text" class="input form-input" id="number" />
           </div>
 
           <div class="control is-expanded switch">
-            <label class="label">Inscrição Estadual</label>
+            <label class="label is-size-7">Inscrição Estadual</label>
             <input type="text" class="input form-input" id="IE" />
           </div>
         </div>
 
         <div class="field is-grouped">
           <div class="control is-expanded switch">
-            <label class="label">Cidade</label>
+            <label class="label is-size-7">Cidade</label>
             <input type="text" class="input form-input" id="city" />
           </div>
 
           <div class="control switch">
-            <label class="label">Estado</label>
+            <label class="label is-size-7">Estado</label>
             <span id="select" class="select form-input">
               <select class="input" id="state">
                 <option>AC</option>
@@ -83,15 +91,15 @@
           </div>
 
           <div class="control switch">
-            <label class="label">Fone</label>
+            <label class="label is-size-7">Fone</label>
             <input type="text" class="input form-input" id="phone" />
           </div>
         </div>
 
         <div class="field is-grouped">
           <div class="control is-expanded switch">
-            <label class="label">Informações Adicionais</label>
-           <textarea class='textarea input' id="IE"></textarea>
+            <label class="label is-size-7">Informações Adicionais</label>
+            <textarea class="textarea input" id="IE"></textarea>
           </div>
         </div>
 
@@ -110,7 +118,7 @@
     </div>
     <hr />
     <table class="table is-fullwidth is-narrow">
-      <thead>
+      <thead class='is-size-7'>
         <tr>
           <th>Qnt</th>
           <th>Unid</th>
@@ -120,7 +128,7 @@
         </tr>
       </thead>
 
-      <tbody id="prods"></tbody>
+      <tbody id="prods" class="is-size-7"></tbody>
 
       <tfoot>
         <tr>
@@ -134,21 +142,54 @@
 
       <tfoot class="hide-print">
         <tr>
-          <th><input id='qnt' step=".01" type="number" class="input" placeholder="Quantidade"></th>
-          <th><span class="select"><select id="unit">
-            <option>Unid</option>
-            <option>Metros</option>
-            <option>Kgs</option>
-            <option>Pct</option>
-          </select></span></th>
-          <th><input id="descri" type="text" class="input is-expanded" placeholder="Descrição"></th>
-          <th><input id="preco" type="number" step=".01" class="input" placeholder="000,00"></th>
-          <th><a class='button is-info' onclick="documentBody.addElement()" >&#10003;</a></th>
+          <th>
+            <input
+              id="qnt"
+              step=".01"
+              type="number"
+              class="input"
+              placeholder="Quantidade"
+            />
+          </th>
+          <th>
+            <span class="select"
+              ><select id="unit">
+                <option>Unid</option>
+                <option>Metros</option>
+                <option>Kgs</option>
+                <option>Pct</option>
+              </select></span
+            >
+          </th>
+          <th>
+            <input
+              id="descri"
+              type="text"
+              class="input is-expanded"
+              placeholder="Descrição"
+            />
+          </th>
+          <th>
+            <input
+              id="preco"
+              type="number"
+              step=".01"
+              class="input"
+              placeholder="000,00"
+            />
+          </th>
+          <th>
+            <a class="button is-info" onclick="documentBody.addElement()"
+              >&#10003;</a
+            >
+          </th>
         </tr>
       </tfoot>
-
     </table>
-
+    <div class="columns assinaturas">
+      <div class="column assinatura mr-5">Assinatura Cliente</div>
+      <div class="column assinatura ml-5">Assinatura Vendedor</div>
+    </div>
 
     <script src="../config.js"></script>
     <script src="./scripts/classes.js"></script>

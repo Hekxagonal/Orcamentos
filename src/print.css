@@ -1,6 +1,8 @@
-body{
-    margin: 0;
+@page {
+    size: auto;   /* auto is the initial value */
+    margin: 0;  /* this affects the margin in the printer settings */
 }
+
 
 .documentHeadPainel{
     display: none;
@@ -12,4 +14,13 @@ body{
 
 .hide-print{
     display: none;
+}
+
+.assinatura{
+    text-align: center;
+    border-top: 1px solid black;
+}
+
+.assinaturas{
+    padding-top: 100px;
 }
