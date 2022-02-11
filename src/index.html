@@ -11,7 +11,7 @@
   <body>
     <div id="documentHead">
       <p class="title">Criar novo documento</p>
-      <p></p>
+      <p class="subtitle">Orçamento</p>
       <form id="document-head" autocomplete="off">
         <div class="field is-grouped">
           <div class="control is-expanded switch">
@@ -20,7 +20,7 @@
           </div>
 
           <div class="control is-expanded switch">
-            <label class="label">CNPJ</label>
+            <label class="label">CNPJ / CPF</label>
             <input type="text" class="input form-input" id="cnpj" />
           </div>
         </div>
@@ -51,7 +51,7 @@
           <div class="control switch">
             <label class="label">Estado</label>
             <span id="select" class="select form-input">
-              <select class='input' id="state">
+              <select class="input" id="state">
                 <option>AC</option>
                 <option>AL</option>
                 <option>AP</option>
@@ -89,14 +89,53 @@
 
         <div class="documentHeadPainel">
           <p class="control">
-            <a class="button is-light is-info" onclick='documentHead.confirm()'> Confirmar </a>
+            <a class="button is-light is-info" onclick="documentHead.confirm()">
+              Confirmar
+            </a>
 
-            <a class="button is-light is-danger" onclick="documentHead.reset()"> Reset </a>
+            <a class="button is-light is-danger" onclick="documentHead.reset()">
+              Reset
+            </a>
           </p>
-
         </div>
       </form>
     </div>
+    <hr />
+    <table class="table is-fullwidth">
+      <thead>
+        <tr>
+          <th>Qnt</th>
+          <th>Unidade</th>
+          <th width="50%">Descrição</th>
+          <th>P. Unit</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+
+      <tbody id="prods"></tbody>
+
+      <tfoot>
+        <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th id="resultTOTAL">TOTAL</th>
+        </tr>
+      </tfoot>
+      <tfoot>
+        <tr>
+          <th><input id='qnt' type="number" class="input" placeholder="Quantidade"></th>
+          <th><input id="unit" step=".01" type="text" class="input" placeholder="Unidade"></th>
+          <th><input id="descri" type="text" class="input is-expanded" placeholder="Descrição"></th>
+          <th><input id="preco" type="text" class="input" placeholder="000,00"></th>
+          <th><a class='button is-info' onclick="documentBody.addElement()" >&#10003;</a></th>
+        </tr>
+      </tfoot>
+
+    </table>
+
+
     <script src="./scripts/classes.js"></script>
     <script src="./scripts/script.js"></script>
     <script src="../extra_modules/vue.js"></script>
