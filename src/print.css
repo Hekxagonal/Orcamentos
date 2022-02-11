@@ -1,0 +1,15 @@
+body{
+    margin: 0;
+}
+
+.documentHeadPainel{
+    display: none;
+}
+
+.break-line {
+    white-space: normal
+}
+
+.hide-print{
+    display: none;
+}

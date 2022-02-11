@@ -3,7 +3,8 @@ class DocumentHead {
     this.form = document.querySelector("#document-head");
     this.inputs = this.form.querySelectorAll("input");
     this.elSwitch = document.querySelectorAll(".switch");
-    this.mode = 0;
+    this.mode = 0; 
+    this.date()
 
     this.cliente;
     this.cnpj;
@@ -15,12 +16,21 @@ class DocumentHead {
     this.phone;
   }
 
+  date(){
+    const date = new Date()
+    let month = date.getMonth
+    let text = date.toLocaleDateString('pt-BR')
+    text = document.createTextNode(text)
+    const dateElement = document.querySelector('#date')
+    dateElement.appendChild(text)
+  }
+
   confirm() {
     this.cliente = document.querySelector("#client").value;
     this.cnpj = document.querySelector("#cnpj").value;
     this.end = document.querySelector("#end").value;
     this.number = document.querySelector("#number").value;
-    this.IE = document.querySelector("#IE").value;
+    this.IE = document.querySelector("#IE").innerHTML;
     this.city = document.querySelector("#city").value;
     this.state = document.querySelector("#state").value;
     this.phone = document.querySelector("#phone").value;
@@ -45,6 +55,7 @@ class DocumentHead {
       input.remove();
 
       let newElement = document.createElement("p");
+      newElement.classList.add('break-line')
       let textNode = document.createTextNode(input.value);
       newElement.appendChild(textNode);
       el.appendChild(newElement);

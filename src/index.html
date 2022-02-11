@@ -6,12 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../extra_modules/bulma.css" />
     <link rel="stylesheet" href="style.css" />
+    <link href="print.css" media="print" rel="stylesheet" />
     <title>Criar novo Orçamento</title>
   </head>
   <body>
     <div id="documentHead">
       <p class="title">Criar novo documento</p>
-      <p class="subtitle">Orçamento</p>
+      <p id="date" class="subtitle"></p>
       <form id="document-head" autocomplete="off">
         <div class="field is-grouped">
           <div class="control is-expanded switch">
@@ -87,6 +88,13 @@
           </div>
         </div>
 
+        <div class="field is-grouped">
+          <div class="control is-expanded switch">
+            <label class="label">Informações Adicionais</label>
+           <textarea class='textarea input' id="IE"></textarea>
+          </div>
+        </div>
+
         <div class="documentHeadPainel">
           <p class="control">
             <a class="button is-light is-info" onclick="documentHead.confirm()">
@@ -101,11 +109,11 @@
       </form>
     </div>
     <hr />
-    <table class="table is-fullwidth">
+    <table class="table is-fullwidth is-narrow">
       <thead>
         <tr>
           <th>Qnt</th>
-          <th>Unidade</th>
+          <th>Unid</th>
           <th width="50%">Descrição</th>
           <th>P. Unit</th>
           <th>Total</th>
@@ -123,12 +131,18 @@
           <th id="resultTOTAL">TOTAL</th>
         </tr>
       </tfoot>
-      <tfoot>
+
+      <tfoot class="hide-print">
         <tr>
-          <th><input id='qnt' type="number" class="input" placeholder="Quantidade"></th>
-          <th><input id="unit" step=".01" type="text" class="input" placeholder="Unidade"></th>
+          <th><input id='qnt' step=".01" type="number" class="input" placeholder="Quantidade"></th>
+          <th><span class="select"><select id="unit">
+            <option>Unid</option>
+            <option>Metros</option>
+            <option>Kgs</option>
+            <option>Pct</option>
+          </select></span></th>
           <th><input id="descri" type="text" class="input is-expanded" placeholder="Descrição"></th>
-          <th><input id="preco" type="text" class="input" placeholder="000,00"></th>
+          <th><input id="preco" type="number" step=".01" class="input" placeholder="000,00"></th>
           <th><a class='button is-info' onclick="documentBody.addElement()" >&#10003;</a></th>
         </tr>
       </tfoot>
@@ -136,6 +150,7 @@
     </table>
 
 
+    <script src="../config.js"></script>
     <script src="./scripts/classes.js"></script>
     <script src="./scripts/script.js"></script>
     <script src="../extra_modules/vue.js"></script>
